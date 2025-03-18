@@ -1,0 +1,34 @@
+﻿@model List<Server.Data.Course>
+
+
+<h2>Courses</h2>
+<br />
+<table class="table table-responsive table-alert-light table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th>Course ID</th>
+            <th>Course Name</th>
+            <th>Synopses</th>
+            <th>Department</th>
+            <th>Price</th>
+            <th>Actions</th> 
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CourseId</td>
+                <td>@item.CourseName</td>
+                <td>@item.Synopses</td>
+                <td>@item.Department</td>
+                <td>@item.Price</td>
+                <td>
+
+                    <a href="@Url.Action("Enroll", "CheckOut", new { userId = "user-id", courseId = item.CourseId, stripeToken = "stripe-token" })" class="btn btn-primary">Enroll</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
